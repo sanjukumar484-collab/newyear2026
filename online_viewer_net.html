@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Christmas & New Year 2026</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:radial-gradient(circle,#0a2a43,#000);
+    color:#fff;
+    text-align:center;
+    overflow:hidden;
+}
+h1{
+    margin-top:40px;
+    font-size:40px;
+    animation:glow 1.5s infinite alternate;
+}
+@keyframes glow{
+    from{ text-shadow:0 0 5px #fff;}
+    to{ text-shadow:0 0 20px #0ff,0 0 40px #f0f;}
+}
+.button{
+    display:inline-block;
+    margin:20px;
+    padding:14px 30px;
+    background:linear-gradient(45deg,#ff1744,#ff9800);
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    font-size:18px;
+    box-shadow:0 0 15px #ff1744;
+}
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:#fff;
+    border-radius:50%;
+    animation:blink 1s infinite alternate;
+}
+@keyframes blink{
+    from{opacity:.3}
+    to{opacity:1}
+}
+
+/* GAME */
+#game{
+    margin-top:30px;
+}
+#gift{
+    font-size:80px;
+    cursor:pointer;
+    animation:bounce 1s infinite;
+}
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎄 Merry Christmas & Happy New Year 2026 🎆</h1>
+
+<p>Tap the gift & see your surprise</p>
+
+<div id="game">
+    <div id="gift" onclick="openGift()">🎁</div>
+    <h2 id="result"></h2>
+</div>
+
+<a class="button" id="shareBtn" target="_blank" onclick="shareWish()">
+Share on WhatsApp
+</a>
+
+<script>
+function openGift(){
+    const prizes=[
+        "🌟 Wishing you success & happiness!",
+        "🎉 2026 will be lucky for you!",
+        "💖 Health, wealth & joy ahead!",
+        "🚀 Big opportunities coming!"
+    ];
+    document.getElementById("result").innerText =
+        prizes[Math.floor(Math.random()*prizes.length)];
+}
+
+function shareWish(){
+    const link = location.href;
+    const msg =
+    "🎄✨ Merry Christmas & Happy New Year 2026 ✨🎆\n\n" +
+    "I played this fun Christmas game 🎁\n" +
+    "Click & enjoy:\n" + link + "\n\n" +
+    "Wishing you joy, success & happiness 🌟";
+
+    document.getElementById("shareBtn").href =
+        "https://wa.me/?text=" + encodeURIComponent(msg);
+}
+
+/* stars */
+for(let i=0;i<60;i++){
+    let s=document.createElement("div");
+    s.className="star";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    s.style.animationDuration=(0.5+Math.random())+"s";
+    document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
